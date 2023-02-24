@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, createContext } from "react";
+
+import UseState from "./pages/UseState/UseState"; 
+import TwoWayBinding from "./pages/TwoWayBinding/TwoWayBinding"
+import ToDoList from "./pages/ToDoList/ToDoList";
+import UseEffect from "./pages/UseEffect/UseEffect";
+import UseRef from "./pages/UseRef/UseRef";
+import UseCallback from "./pages/UseCallback/UseCallback";
+import UseMemo from "./pages/UseMemo/UseMemo";
+import UseReducer from "./pages/UseReducer/UseReducer";
+import ToDoAppWithUseReducer from "./pages/ToDoAppWithUseReducer";
+import Context from "./pages/Context/Context";
+import './App.css'
+
+const ThemeContext = createContext();
+console.log('ThemeContext :',ThemeContext);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [show, setShow] = useState(false);
+
+
+   return (
+    <div className="App" style={{padding: 32}}>
+     <UseState/>
+     <TwoWayBinding/>
+     <ToDoList/>
+     <button onClick={() => setShow(!show)}>Toggle</button>
+     {show && <UseEffect/>}
+
+     <UseRef/>
+     <UseCallback/>
+     <UseMemo/>
+     <UseReducer/>
+     <ToDoAppWithUseReducer/>
+
+      <Context/>
+
+
     </div>
+
+    
   );
 }
 
